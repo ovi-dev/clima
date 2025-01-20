@@ -11,6 +11,13 @@ import "./globals.css";
 //   variable: "--font-geist-mono",
 //   subsets: ["latin"],
 // });
+interface ImportMetaEnv {
+  [key: string]: string;
+}
+
+interface ImportMeta {
+  env: ImportMetaEnv;
+}
 
 export const metadata: Metadata = {
   title: "El Clima",
@@ -22,6 +29,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="es">
       <body

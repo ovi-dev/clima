@@ -1,9 +1,11 @@
-export const countries = [
-    { code: 'US', name: 'Estados Unidos' },
-    { code: 'MX', name: 'México' },
-    { code: 'AR', name: 'Argentina' },
-    { code: 'CO', name: 'Colombia' },
-    { code: 'CR', name: 'Costa Rica' },
+import { Country } from "@/interfaces/tipe"
+
+
+
+export const countries: Country[] = [
     { code: 'ES', name: 'España' },
-    { code: 'PE', name: 'Perú' }
+    { code: 'UK', name: 'Lonres' },
+    { code: 'US', name: 'Estados Unidos' },
+    { code: 'CR', name: 'Costa Rica' },
+    { code: 'VE', name: 'Caracas' }
   ]
