@@ -3,7 +3,7 @@ import axios from "axios";
 import { Buscar, ElClima } from '../interfaces/tipe';
 
 import { z } from "zod";
-import { use, useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 
 const Weather = z.object({
     name: z.string(),

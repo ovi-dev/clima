@@ -2,7 +2,7 @@
 
 import { countries } from '@/data/pais'
 import { Buscar } from '@/interfaces/tipe'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import {  FormEvent, useState } from 'react'
 import Alerta from './Alerta'
 
 interface FormularioProps {

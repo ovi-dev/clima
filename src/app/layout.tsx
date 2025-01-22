@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {roboto, geistSans, lora, openSans} from '../font/fuentes';
+import {roboto, geistSans} from '../font/fuentes';
 import "./globals.css";
 
 // const geistSans = Geist({
@@ -11,13 +11,7 @@ import "./globals.css";
 //   variable: "--font-geist-mono",
 //   subsets: ["latin"],
 // });
-interface ImportMetaEnv {
-  [key: string]: string;
-}
 
-interface ImportMeta {
-  env: ImportMetaEnv;
-}
 
 export const metadata: Metadata = {
   title: "El Clima",
