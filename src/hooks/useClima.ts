@@ -44,7 +44,7 @@ export default function useClima() {
         setloadin(true)
        
     try {
-       const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${buscar.city},${buscar.country}&appid=${appId}`
+       const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${buscar.city},${buscar.country}&appid=${appId}`
          const { data } = await axios.get(geoUrl) 
 
         //  comprobar si existe la ciudad y el pais
