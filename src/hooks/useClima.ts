@@ -3,7 +3,7 @@ import axios from "axios";
 import { Buscar, ElClima } from '../interfaces/tipe';
 
 import { z } from "zod";
-import { useState } from "react";
+import { use, useMemo, useState } from "react";
 
 const Weather = z.object({
     name: z.string(),
@@ -30,28 +30,33 @@ export default function useClima() {
             humidity: 0
         }
     })
+    // muestra el loading
+    const [loadin, setloadin] = useState(false)
+
+    // muestra el mensaje de no encontrado
+    const [noencontrado, setnoencontrado] = useState(false)
     
 
 
     const fetchClima = async ( buscar: Buscar ) => {
         const appId = process.env.NEXT_PUBLIC_API_URL
+            // se ejecuta el loading en true
+        setloadin(true)
        
     try {
        const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${buscar.city},${buscar.country}&appid=${appId}`
          const { data } = await axios.get(geoUrl) 
 
+        //  comprobar si existe la ciudad y el pais
+        if (data.length === 0) {
+            setnoencontrado(true)
+            return
+        }
+
             const lat = data[0].lat
             const lon = data[0].lon
 
             const climaUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
-
-
-            // castear el tipo de dato que se espera
-
-            // const { data: clima } = await axios.get<ElClima>(climaUrl)
-            // console.log(clima.main.temp_max);
-            // console.log(clima.main.temp_min);
-            // return clima
 
           
 
@@ -66,16 +71,28 @@ export default function useClima() {
 
         } catch (error) {
         console.log(error);
+
+        // funcion nativa de javascript para mostrar errores
+    } finally {
+        // se detiene el loading
+        setloadin(false)
     }
 
-    
+
     
     
 }
+// revisar si hay data y agregar el clima al state con useMemo
+
+
+ const tieneData = useMemo(() => water.name, [water])
 
 return {
     water,
-    fetchClima
+    fetchClima,
+    tieneData,
+    loadin,
+    noencontrado
 }
 
 }
